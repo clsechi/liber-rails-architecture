@@ -1,4 +1,4 @@
-FROM ruby:2.7-alpine as base
+FROM ruby:3.1-alpine as base
 
 # Arguments
 ARG APP_PATH=/home/app/web

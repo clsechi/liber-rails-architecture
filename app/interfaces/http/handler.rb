@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Http
   class Handler < ActionController::API
     include Http::ErrorHandler

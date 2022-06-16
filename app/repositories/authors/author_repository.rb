@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 module Author
-  class AuthorRepository
+  module AuthorRepository
     # include RepositoryErrorHandler Here we can use a custom error handler to correct map ActiveRecord errors
 
-    def self.create!(args:)
+    def create!(args:)
       Author.create!(args)
     end
   end

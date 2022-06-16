@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Http
   module ErrorHandler
     def self.included(clazz)
@@ -24,7 +26,7 @@ module Http
     private
 
     def respond(_error, status, message)
-      render(JsonResponse.error(message: message, status: status))
+      render({ error: { message: message }, status: status })
     end
   end
 end

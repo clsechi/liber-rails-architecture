@@ -1,0 +1,70 @@
+require:
+  - rubocop-rspec
+  - rubocop-rails
+  - rubocop-performance
+
+AllCops:
+  DisplayCopNames: true
+  EnabledByDefault: true
+  TargetRubyVersion: 3.1.2
+  Exclude:
+    - bin/**/*
+    - db/**/*
+
+Rails:
+  Enabled: true
+
+Metrics/MethodLength:
+  Max: 50
+
+Style/Copyright:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Lint/ConstantResolution:
+  Enabled: false
+
+Style/InlineComment:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
+Bundler/GemComment:
+  Enabled: false
+
+Style/MissingElse:
+  EnforcedStyle: case
+
+Metrics/AbcSize:
+  CountRepeatedAttributes: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either
+
+RSpec:
+  Language:
+    ExampleGroups:
+      Regular:
+        - describe
+        - context
+        - feature
+        - example_group
+        - path
+        - post
+        - put
+        - get
+        - delete
+    Examples:
+      Regular:
+        - it
+        - specify
+        - example
+        - scenario
+        - its
+        - response
