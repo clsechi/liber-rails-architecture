@@ -2,15 +2,15 @@
 
 # == Schema Information
 #
-# Table name: books
+# Table name: loans
 #
 #  id         :bigint           not null, primary key
-#  title      :string
-#  author     :string
-#  year       :string
-#  quantity   :integer
+#  due_date   :date
+#  status     :integer
+#  user_id    :bigint           not null
+#  book_id    :bigint           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Book < ApplicationRecord
+class Loan < ApplicationRecord
 end

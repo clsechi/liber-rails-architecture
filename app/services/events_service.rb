@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 module EventsService
-  def author_created(author:)
-    mapped = EventsMapper.author(author)
+  def book_created(book:)
+    mapped = EventsMapper.book(book)
     dispacher(mapped)
   end
 end

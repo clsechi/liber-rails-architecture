@@ -2,15 +2,13 @@
 
 # == Schema Information
 #
-# Table name: books
+# Table name: users
 #
 #  id         :bigint           not null, primary key
-#  title      :string
-#  author     :string
-#  year       :string
-#  quantity   :integer
+#  name       :string
+#  phone      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
-class Book < ApplicationRecord
+class User < ApplicationRecord
 end
