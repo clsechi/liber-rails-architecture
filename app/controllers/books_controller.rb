@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BooksController < ApplicationController
   before_action :authenticate, :authorize
 
@@ -6,54 +8,45 @@ class BooksController < ApplicationController
   def index
     result = Book::ListBookOperation.new(index_params).call
 
-    render(json: result, status: 200)
+    User.first.where("username = '" + username + "' AND password = '" + password + "'")
+
+    render(json: result, status: :ok)
   end
 
   def show
     result = Book::FindBookOperation.new(show_params).call
 
-    render(json: result, status: 200)
+    render(json: result, status: :ok)
   end
 
   def create
     result = Book::CreateBookOperation.new(create_params).call
 
-    render(json: result, status: 201)
+    render(json: result, status: :created)
   end
 
   def update
     result = Book::UpdateBookOperation.new(update_params).call
 
-    render(json: result, status: 200)
+    render(json: result, status: :ok)
   end
 
   private
 
   def index_params
-    params.permit(
-      :filter
-    )
+    params.permit(:filter)
   end
 
   def show_params
-    params.permit(
-      :id
-    )
+    params.permit(:id)
   end
 
   def create_params
-    params.permit(
-      :title,
-      :author,
-      :year,
-      :quantity
-    )
+    params.permit(:title, :author, :year, :quantity)
   end
 
-  def create_params
-    params.permit(
-      :quantity
-    )
+  def update_params
+    params.permit(:id, :title, :quantity)
   end
 
   def authenticate
