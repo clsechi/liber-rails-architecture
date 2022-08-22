@@ -47,6 +47,15 @@ Metrics/AbcSize:
 Style/HashSyntax:
   EnforcedShorthandSyntax: either
 
+Layout/RedundantLineBreak:
+  Enabled: false
+
+Style/MultilineMethodSignature:
+  Enabled: false
+
+Layout/FirstMethodParameterLineBreak:
+  Enabled: false
+
 RSpec:
   Language:
     ExampleGroups:

@@ -2,16 +2,27 @@
 
 module Book
   class BookPresenter
-    def initialize(book:)
-      @book = book
+    def initialize(books:)
+      @books = books
     end
 
     def attributes
-      book.to_h
+      if books.is_a(Array)
+        books.map do |book|
+          mapper(book)
+        end
+
+      else
+        mapper(books)
+      end
     end
 
     private
 
-    attr_reader :book
+    def mapper(book)
+      book.to_h
+    end
+
+    attr_reader :books
   end
 end

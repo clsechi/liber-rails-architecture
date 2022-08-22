@@ -1,32 +1,32 @@
 # frozen_string_literal: true
 
 class BooksController < ApplicationController
-  before_action :authenticate, :authorize
-
-  # Add generic error handler here or in ApplicationController
+  include Errors::Handlers::Http::Raised
 
   def index
-    result = Book::ListBookOperation.new(index_params).call
-
-    User.first.where("username = '" + username + "' AND password = '" + password + "'")
+    books = Book::ListBookUseCase.new(index_params).call!
+    result = Book::BookPresenter.new(books: books).attributes
 
     render(json: result, status: :ok)
   end
 
   def show
-    result = Book::FindBookOperation.new(show_params).call
+    book = Book::FindBookUseCase.new(show_params).call!
+    result = Book::BookPresenter.new(books: book).attributes
 
     render(json: result, status: :ok)
   end
 
   def create
-    result = Book::CreateBookOperation.new(create_params).call
+    book = Book::CreateBookUseCase.new(create_params).call!
+    result = Book::BookPresenter.new(books: book).attributes
 
     render(json: result, status: :created)
   end
 
   def update
-    result = Book::UpdateBookOperation.new(update_params).call
+    book = Book::UpdateBookUseCase.new(update_params).call!
+    result = Book::BookPresenter.new(books: book).attributes
 
     render(json: result, status: :ok)
   end
@@ -34,7 +34,7 @@ class BooksController < ApplicationController
   private
 
   def index_params
-    params.permit(:filter)
+    params.permit(:filters, :pagination)
   end
 
   def show_params
@@ -47,14 +47,5 @@ class BooksController < ApplicationController
 
   def update_params
     params.permit(:id, :title, :quantity)
-  end
-
-  def authenticate
-    # do some authetication
-  end
-
-  def authorize
-    # this can be done with Pundit
-    # sounds better do that here, as other interfaces can be unauthenticated
   end
 end

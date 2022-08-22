@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Errors
-  module Operations
+  module Http
     class AuthorizationError < StandardError
       def initialize(message = 'Authorization error')
         super(message)

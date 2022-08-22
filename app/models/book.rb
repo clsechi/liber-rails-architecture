@@ -13,4 +13,11 @@
 #  updated_at :datetime         not null
 #
 class Book < ApplicationRecord
+  has_many :loans, dependent: :destroy
+
+  validates :title,
+            :author,
+            :year,
+            :quantity,
+            presence: true
 end

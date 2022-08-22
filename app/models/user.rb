@@ -11,4 +11,9 @@
 #  updated_at :datetime         not null
 #
 class User < ApplicationRecord
+  has_many :loans, dependent: :nullify
+
+  validates :name,
+            :phone,
+            presence: true
 end
