@@ -3,6 +3,7 @@ FROM ruby:3.1-alpine as base
 # Arguments
 ARG APP_PATH=/home/app/web
 ARG PORT=3005
+ARG BUNDLE_PATH="/usr/local/bundle/gems"
 ARG BUILD_PACKAGES="nodejs alpine-sdk postgresql-client"
 ARG DEV_PACKAGES="postgresql-dev"
 ARG RUNTIME_PACKAGES="tzdata"

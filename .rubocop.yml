@@ -56,6 +56,12 @@ Style/MultilineMethodSignature:
 Layout/FirstMethodParameterLineBreak:
   Enabled: false
 
+RSpec/HookArgument:
+  Enabled: false
+
+Layout/MultilineAssignmentLayout:
+  Enabled: false
+
 RSpec:
   Language:
     ExampleGroups:

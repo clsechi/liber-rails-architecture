@@ -25,9 +25,16 @@ gem 'bootsnap', '>= 1.4.4', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+group :test do
+  gem 'database_cleaner-active_record'
+  gem 'rspec-mocks'
+  gem 'rspec-rails', '~> 5'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot'
 end
 
 group :development do
@@ -35,6 +42,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem "solargraph", "~> 0.46.0", require: false
 
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
@@ -46,3 +55,5 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'net-smtp', '~> 0.3.1'
+
+gem "rspec", "~> 3.11"
